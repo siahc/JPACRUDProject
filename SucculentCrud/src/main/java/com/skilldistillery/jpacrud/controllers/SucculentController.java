@@ -47,4 +47,25 @@ private SucculentDAO succulentDao;
 		}
 		return "deleteError";
 	}
+	@RequestMapping(path = "updateForm.do")
+	public String getUpdateForm(Integer sid, Model model) {
+		Succulent succulent = succulentDao.findById(sid);
+		if (succulent == null) {
+			return "notFound";
+		}
+		model.addAttribute("succulent", succulent);
+		return "updateForm";
+	}
+//	@RequestMapping(path = "updateSucculent.do")
+//	public String getUpdateForm(Integer sid, Model model) {
+//		TODO: add form fields to method args
+	
+//		TODO: Create updateSucculent object from args
+	//Succulent succulent = succulentDao.update(sid, updateSucculent); 
+//		if (succulent == null) {
+//			return "updateError"; //TODO: Add a view for updateError.jsp
+//		}
+//		model.addAttribute("succulent", succulent);
+//		return "getSucculent"; //already implemented
+//	}
 }

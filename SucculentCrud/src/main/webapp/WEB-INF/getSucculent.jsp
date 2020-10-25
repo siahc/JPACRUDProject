@@ -17,7 +17,7 @@
 	<h2>Price: ${succulent.formatPrice()}</h2>
 	<h2>Watering Needs: ${succulent.getWateringNeeds()}</h2>
 	
-	<a href="updateSucculent.do?sid=${succulent.id}">Update ${succulent.commonName}</a>
+	<a href="updateForm.do?sid=${succulent.id}">Update ${succulent.commonName}</a>
 	<a href="deleteSucculent.do?sid=${succulent.id}">Delete ${succulent.commonName}</a>
 
 </body>
