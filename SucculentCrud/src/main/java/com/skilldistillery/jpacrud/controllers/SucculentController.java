@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.jpacrud.data.SucculentDAO;
 import com.skilldistillery.jpacrud.entities.Succulent;
@@ -56,16 +57,35 @@ private SucculentDAO succulentDao;
 		model.addAttribute("succulent", succulent);
 		return "updateForm";
 	}
-//	@RequestMapping(path = "updateSucculent.do")
-//	public String getUpdateForm(Integer sid, Model model) {
-//		TODO: add form fields to method args
+	@RequestMapping(path = "updateSucculent.do")
+	public String getUpdatedSucculent(Integer sid, String commonName, String scientificName, String description, String price, String wateringNeeds) {
+//	TODO: add form fields to method args
+	Succulent updateSucculent = succulentDao.findById(sid);
+	updateSucculent.setCommonName(commonName);
+	updateSucculent.setScientificName(scientificName);
+	updateSucculent.setPrice(Double.valueOf(price));
+	updateSucculent.setDescription(description);
+	updateSucculent.setWateringNeeds(wateringNeeds);
 	
-//		TODO: Create updateSucculent object from args
-	//Succulent succulent = succulentDao.update(sid, updateSucculent); 
-//		if (succulent == null) {
-//			return "updateError"; //TODO: Add a view for updateError.jsp
-//		}
-//		model.addAttribute("succulent", succulent);
-//		return "getSucculent"; //already implemented
-//	}
+	Succulent succulent = succulentDao.update(sid, updateSucculent); 
+		if (succulent == null) {
+			return "updateError"; //TODO: Add a view for updateError.jsp
+		}
+	
+		return "redirect:/";
+	}
+
+	@RequestMapping(path = "addSucculent.do")
+	public String getUpdateForm() {
+		return "add";
+	}
+
+	@RequestMapping(path = "createSucculent.do")
+	public String addSucculent(Succulent succulent, RedirectAttributes redirect) {
+		Succulent addedSucculent = succulentDao.create(succulent);
+	return "redirect:/";
+	}
+
 }
+
+

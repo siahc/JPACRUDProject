@@ -16,11 +16,18 @@
 		<br>
 		Common Name: <input
 			type="text" name="commonName" value="${succulent.getCommonName()}" />
-		<h2>Scientific Name: ${succulent.getScientificName()}</h2>
-
-		<h2>Description: ${succulent.getDescription()}</h2>
-		<h2>Price: ${succulent.formatPrice()}</h2>
-		<h2>Watering Needs: ${succulent.getWateringNeeds()}</h2>
+		<br>
+		Scientific Name: <input
+		type="text" name="scientificName" value="${succulent.getScientificName()}" />
+		<br>
+		Description: <input 
+		type="text" name="description" value="${succulent.getDescription()}" />
+		<br>
+		Price: $<input
+		type="text"  name="price" value="${succulent.getPrice()}" />
+		<br>
+		Watering Needs: <input
+		type="text" name="wateringNeeds" value="${succulent.getWateringNeeds()}" />
 		<br> <input type="submit" value="Update" />
 	</form>
 

@@ -32,7 +32,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
-
+	<a href="addSucculent.do">Add Succulent</a>
 
 </body>
 </html>
